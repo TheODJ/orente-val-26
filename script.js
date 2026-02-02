@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const result = document.getElementById('result');
   const noResult = document.getElementById('noResult');
   const resultMessage = document.getElementById('resultMessage');
-  const buttonsContainer = document.getElementById('buttons');
-  const container = document.getElementById('container');
+      const buttonsContainer = document.getElementById('buttons');
+      const container = document.getElementById('container');
+      // Paragraph element inside the noResult container for dynamic messages
+      const noMessage = document.getElementById('noMessage');
 
   /**
    * Move the "No" button to a random position inside the container.
@@ -87,9 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleNoClick(event) {
     // Prevent the default move behaviour triggered on click
     event.stopPropagation();
-    // Hide the No button to avoid repeated clicks
-    noButton.style.display = 'none';
-    // Show the message for clicking no
+    // Show the playful message when the No button is actually clicked.
+    // We keep the No button visible so the joke persists.
+    noMessage.textContent = 'As how nau?';
     noResult.classList.remove('hidden');
     // You may still click the yes button
   }
@@ -107,14 +109,17 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function handleNoHover(event) {
     noHoverCount++;
-    if (noHoverCount >= 5) {
-      // User has tried five times; hide the No button and show the message
-      noButton.style.display = 'none';
+    // On the fifth hover attempt, display the first playful message
+    if (noHoverCount === 5) {
+      noMessage.textContent = 'As how nau?';
       noResult.classList.remove('hidden');
-    } else {
-      // Before the threshold, just move the button away
-      moveNoButton();
+    } else if (noHoverCount === 10) {
+      // On the tenth hover, update to a more pleading message with italic text
+      noMessage.innerHTML = "Oya don't be angry, my baby. Will you please <em>be my valentine?</em>";
+      noResult.classList.remove('hidden');
     }
+    // Always move the button away to dodge the cursor
+    moveNoButton();
   }
 
   /**
