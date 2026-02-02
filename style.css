@@ -81,6 +81,11 @@ button:hover {
   color: #333;
 }
 
+/* Hide the noResult section when it has the hidden class */
+#noResult.hidden {
+  display: none;
+}
+
 /* Styling for the noResult message */
 #noResult {
   margin-top: 20px;
