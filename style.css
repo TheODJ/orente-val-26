@@ -1,0 +1,66 @@
+/* Basic styling for the valentine page */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(45deg, #ffc1cc, #ffefba);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+#container {
+  position: relative;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2em;
+  color: #333;
+}
+
+button {
+  padding: 12px 24px;
+  margin: 20px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#yesButton {
+  background-color: #28a745;
+  color: #fff;
+}
+
+#noButton {
+  background-color: #dc3545;
+  color: #fff;
+  position: absolute;
+}
+
+#result.hidden {
+  display: none;
+}
+
+#result img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+}
+
+#result p {
+  font-size: 1.5em;
+  margin-top: 20px;
+  color: #333;
+}
