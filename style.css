@@ -18,6 +18,22 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Make the container adapt on small screens */
+@media (max-width: 600px) {
+  #container {
+    width: 90%;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1em;
+  }
+}
+
 h1 {
   margin-top: 0;
   font-size: 2em;
@@ -63,4 +79,53 @@ button:hover {
   font-size: 1.5em;
   margin-top: 20px;
   color: #333;
+}
+
+/* Styling for the noResult message */
+#noResult {
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Heart animation styles */
+.heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: #ff69b4;
+  transform: rotate(45deg);
+  animation: float 4s linear forwards;
+  pointer-events: none;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ff69b4;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-150px) rotate(45deg);
+  }
 }

@@ -13,11 +13,19 @@
         <button id="yesButton">Yes</button>
         <button id="noButton">No</button>
       </div>
+      <!-- Result shown when the Yes button is clicked -->
       <div id="result" class="hidden">
         <img src="image.png" alt="celebration image" />
-        <p>You made the right choice 🌚</p>
+        <!-- This message can be customised further in JS -->
+        <p id="resultMessage">You made the right choice 🌚</p>
+      </div>
+      <!-- Result shown if the No button somehow gets clicked -->
+      <div id="noResult" class="hidden">
+        <p>As how nau?</p>
       </div>
     </div>
+    <!-- External library for confetti effects -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
