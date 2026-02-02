@@ -94,11 +94,47 @@ document.addEventListener('DOMContentLoaded', () => {
     // You may still click the yes button
   }
 
-  // Move the No button on mouseover to dodge user attempts
-  noButton.addEventListener('mouseover', moveNoButton);
+  // Counter to track how many times the user has hovered over the "No" button.
+  // After five hover attempts, we'll reveal the playful message instead of just moving it.
+  let noHoverCount = 0;
+
+  /**
+   * Handler for when the user hovers over the "No" button. Each hover
+   * increments a counter. The button dodges until the counter reaches
+   * five, at which point we show the "As how nau?" message and hide the
+   * button. This makes it virtually impossible to click, but after
+   * multiple attempts the surprise message still appears.
+   */
+  function handleNoHover(event) {
+    noHoverCount++;
+    if (noHoverCount >= 5) {
+      // User has tried five times; hide the No button and show the message
+      noButton.style.display = 'none';
+      noResult.classList.remove('hidden');
+    } else {
+      // Before the threshold, just move the button away
+      moveNoButton();
+    }
+  }
+
+  /**
+   * Handler for mousedown on the No button. We keep this separate so
+   * that any mouse press (even if not hovered) also causes the button
+   * to move, but we don't count these toward the hover attempts. This
+   * ensures the button feels slippery while still counting only real
+   * hover interactions.
+   */
+  function handleNoMouseDown(event) {
+    // Always move the button on mousedown to dodge the click
+    moveNoButton();
+  }
+
+  // Move the No button on mouseover and track attempts
+  noButton.addEventListener('mouseover', handleNoHover);
   // Also move on click attempt (before actual click handler) to make it elusive
-  noButton.addEventListener('mousedown', moveNoButton);
-  // If the user manages to click, show the "As how nau?" message
+  // We don't increment the hover count here.
+  noButton.addEventListener('mousedown', handleNoMouseDown);
+  // If the user somehow manages to click, show the "As how nau?" message
   noButton.addEventListener('click', handleNoClick);
 
   // On clicking Yes, run the celebration
